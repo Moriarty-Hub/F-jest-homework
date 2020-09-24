@@ -1,5 +1,5 @@
-import { register } from "../user";
 import axios from "axios";
+import { register } from "../user";
 import { verifyUsername } from "../verify";
 
 jest.mock("../verify");
