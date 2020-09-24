@@ -1,4 +1,5 @@
 import VaccineTest from "../vaccineTest";
+import Covid19Vaccine from "../covid19Vaccine";
 
 const mockAcceptInjection = jest.fn();
 const mockGetHasAntibodies = jest.fn();
@@ -23,7 +24,12 @@ describe("inject", () => {
     // TODO 14: add test here
     const vaccineTest = new VaccineTest();
     vaccineTest.inject();
-    expect(mockAcceptInjection).toHaveBeenCalledTimes(1);
+    // TODO feedback: 这个测试的描述是说要injection with vaccine
+
+    // expect(mockAcceptInjection).toHaveBeenCalledTimes(1);
+    expect(mockAcceptInjection).toHaveBeenCalledWith(
+      expect.any(Covid19Vaccine)
+    );
   });
 });
 
@@ -33,8 +39,11 @@ describe("test", () => {
     mockGetHasAntibodies.mockReturnValue(true);
     const vaccineTest = new VaccineTest();
     const result = vaccineTest.test();
-    expect(mockGetHasAntibodies).toBeCalled();
-    expect(mockGetHasAntibodies).toBeCalledTimes(1);
+    // TODO feedback: 当我们测试的function有返回值的时候，我们测返回值就可以了
+
+    // expect(mockGetHasAntibodies).toBeCalled();
+    // expect(mockGetHasAntibodies).toBeCalledTimes(1);
+
     expect(result).toEqual("Vaccine Test Success");
   });
 
@@ -43,8 +52,10 @@ describe("test", () => {
     mockGetHasAntibodies.mockReturnValue(false);
     const vaccineTest = new VaccineTest();
     const result = vaccineTest.test();
-    expect(mockGetHasAntibodies).toBeCalled();
-    expect(mockGetHasAntibodies).toBeCalledTimes(1);
+    // TODO feedback: 当我们测试的function有返回值的时候，我们测返回值就可以了
+
+    // expect(mockGetHasAntibodies).toBeCalled();
+    // expect(mockGetHasAntibodies).toBeCalledTimes(1);
     expect(result).toEqual("Vaccine Test Failed");
   });
 });
